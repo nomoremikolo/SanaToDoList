@@ -6,7 +6,7 @@ namespace BusinessLogic.intefaces
 {
     public interface IRepository
     {
-       List<TaskEntity> GetAllTasksList();
+        List<TaskEntity> GetAllTasksList();
         void CreateTask(TaskEntity task);
         TaskEntity GetTaskById(int id);
         void UpdateTask(TaskEntity task);

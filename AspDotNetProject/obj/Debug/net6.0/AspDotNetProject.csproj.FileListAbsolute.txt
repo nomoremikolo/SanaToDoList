@@ -267,3 +267,6 @@ C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\Graph
 C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\GraphQL.Server.Ui.GraphiQL.dll
 C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\GraphQL.Server.Ui.Playground.dll
 C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\GraphQL.NewtonsoftJson.dll
+C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\libman.json
+C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\kolas\source\repos\SanaToDoList\AspDotNetProject\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -11,6 +11,8 @@ using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using AspDotNetProject.Extensions;
+using AspDotNetProject;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 public class Startup
 {
@@ -24,19 +26,12 @@ public class Startup
         services.AddControllersWithViews();
         services.AddHttpContextAccessor();
 
-        services.AddGraphQLApi();
+        services.Configure<IISServerOptions>(options => options.AllowSynchronousIO = true);
+        services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
 
-        services.AddTransient<IRepository>(provider =>
-        {
-            switch (DataBaseProvider.DBIndetificator)
-            {
-                case (int)DataBaseEnum.XML:
-                    return new XMLRepository();
-                case (int)DataBaseEnum.MSSQL:
-                    return new MSSqlRepository(configuration["ConnectionStrings:default"]);
-            }
-            return new XMLRepository();
-        });
+        services.AddGraphQLApi();
+        services.AddProviderService(configuration);
+
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {

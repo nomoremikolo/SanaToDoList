@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using TaskEntity = BusinessLogic.Entities.TaskEntity;
+using AutoMapper;
 
 namespace XMLDataRepository
 {
@@ -70,7 +71,7 @@ namespace XMLDataRepository
 
             var taskList = GetAllTasksList();
 
-            if (taskList.FirstOrDefault(r => r.CategoryId == Id) != null)
+            if (taskList.AsEnumerable().FirstOrDefault(r => r.CategoryId == Id) != null)
             {
                 return;
             }
@@ -103,6 +104,7 @@ namespace XMLDataRepository
         {
             XDocument doc = XDocument.Load(categoriesPath);
             var list = new List<CategoryEntity>();
+            
 
             XElement categories = doc.Element("Categories");
 
@@ -173,12 +175,12 @@ namespace XMLDataRepository
 
         public CategoryEntity GetCategoryById(int id)
         {
-            return GetAllCategoriesList().Where(r => r.Id == id).FirstOrDefault();
+            return GetAllCategoriesList().AsEnumerable().Where(r => r.Id == id).FirstOrDefault();
         }
 
         public TaskEntity GetTaskById(int id)
         {
-            return GetAllTasksList().Where(r => r.Id == id).FirstOrDefault();
+            return GetAllTasksList().AsEnumerable().Where(r => r.Id == id).FirstOrDefault();
         }
 
         public void UpdateCategory(CategoryEntity category)

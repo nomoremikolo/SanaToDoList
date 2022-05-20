@@ -92,8 +92,8 @@ namespace MSQLDataRepository
                 connection.Open();
                 var result = connection.Query<CategoryEntity>(
                     @"select * from Categories 
-                    order by Text").ToList();
-                return result;
+                    order by Text");
+                return result.ToList();
             }
         }
 
@@ -103,9 +103,9 @@ namespace MSQLDataRepository
             {
                 connection.Open();
                 var result = connection.Query<TaskEntity>(
-                    @"select * from Tasks").ToList();
+                    @"select * from Tasks");
 
-                return result;
+                return result.ToList();
             }
         }
 
