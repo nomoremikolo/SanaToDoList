@@ -1,0 +1,6 @@
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\obj\Debug\BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\kolas\source\repos\SanaToDoList\BusinessLogic\obj\Debug\BusinessLogic.pdb

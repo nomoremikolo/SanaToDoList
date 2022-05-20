@@ -1,0 +1,9 @@
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\bin\Debug\XMLRepository.dll
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\bin\Debug\XMLRepository.pdb
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\bin\Debug\BusinessLogic.dll
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\bin\Debug\BusinessLogic.pdb
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\obj\Debug\XMLDataRepository.csproj.AssemblyReference.cache
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\obj\Debug\XMLDataRepository.csproj.CoreCompileInputs.cache
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\obj\Debug\XMLDataRepository.csproj.CopyComplete
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\obj\Debug\XMLRepository.dll
+C:\Users\kolas\source\repos\SanaToDoList\XMLRepository\obj\Debug\XMLRepository.pdb

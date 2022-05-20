@@ -1,0 +1,36 @@
+﻿@model AspDotNetProject.ViewModels.CategoriesListViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="p-2 text-center">
+    <label>New category</label>
+    <form asp-action="Create" asp-controller="Categories" method="post">
+        <input class="form-control btn-group w-25" asp-for="CategoryModel.Text" placeholder="Text" type='text' maxlength=50 required  />
+        <input class="btn btn-primary" type="submit"/>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryModel.Text)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Categories) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |    
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,186 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\AspDotNetProject\\AspDotNetProject.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\AspDotNetProject\\AspDotNetProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\AspDotNetProject\\AspDotNetProject.csproj",
+        "projectName": "AspDotNetProject",
+        "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\AspDotNetProject\\AspDotNetProject.csproj",
+        "packagesPath": "C:\\Users\\kolas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\AspDotNetProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kolas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj"
+              },
+              "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\MSQLDataRepository\\MSQLDataRepository.csproj": {
+                "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\MSQLDataRepository\\MSQLDataRepository.csproj"
+              },
+              "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\XMLRepository\\XMLDataRepository.csproj": {
+                "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\XMLRepository\\XMLDataRepository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "GraphQL": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "GraphQL.MicrosoftDI": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "GraphQL.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "GraphQL.Server.Core": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
+            "GraphQL.Server.Transports.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "GraphQL.Server.Ui.Altair": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "GraphQL.Server.Ui.GraphiQL": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "GraphQL.Server.Ui.Playground": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "GraphQL.SystemTextJson": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj",
+        "projectName": "BusinessLogic",
+        "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\MSQLDataRepository\\MSQLDataRepository.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\MSQLDataRepository\\MSQLDataRepository.csproj",
+        "projectName": "MSQLDataRepository",
+        "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\MSQLDataRepository\\MSQLDataRepository.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\XMLRepository\\XMLDataRepository.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\XMLRepository\\XMLDataRepository.csproj",
+        "projectName": "XMLDataRepository",
+        "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\XMLRepository\\XMLDataRepository.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\kolas\\source\\repos\\SanaToDoList\\BusinessLogic\\BusinessLogic.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

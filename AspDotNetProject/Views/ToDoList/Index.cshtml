@@ -1,0 +1,135 @@
+﻿@model AspDotNetProject.ViewModels.TaskListViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    input{
+
+    }
+</style>
+<script>
+    window.addEventListener("click", function(ev){
+        let target = ev.target;
+        if(target.tagName == "INPUT"){
+             if(target.parentNode.tagName == "TD"){
+                 if(target.getAttribute("checked")){
+                     location.href = "./ToDoList/Complete?Id=" + target.parentNode.lastChild.value;
+                     return 0;
+                 }
+             }
+        }
+        if(target.tagName == "INPUT"){
+            if(target.parentNode.tagName == "TD"){
+                location.href = "./ToDoList/Complete?Id=" + target.parentNode.lastChild.value;
+            }
+        }
+    });
+</script>
+<div class="p-2 text-center">
+    <label>New task</label>
+    <form asp-action="Create" asp-controller="ToDoList" method="post">
+        <input class="form-control btn-group w-25" asp-for="TaskModel.Text" placeholder="Text" type='text' maxlength=50 required  />
+        <input class="form-control btn-group w-25 " asp-for="TaskModel.DeadLine" type="datetime-local">
+        <select class="form-control btn-group w-25" asp-for="TaskModel.CategoryId">
+            @foreach (var item in Model.Categories)
+            {
+                <option value="@item.Id">@item.Text</option>
+            }
+        </select>
+
+        <input class="btn btn-primary" type="submit"/>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Complete")
+            </th>
+            <th>
+                @Html.DisplayName("Text")
+            </th>
+            <th>
+                @Html.DisplayName("DeadLine")
+            </th>
+            <th>
+                @Html.DisplayName("Category")
+            </th>
+            <th>
+                @Html.DisplayName("CreateAt")
+            </th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.UnCompleteTasksTable.Count() > 0){
+        @foreach (var item in Model.UnCompleteTasksTable) {
+            <tr @if(item.DeadLine <= DateTime.Now){@("style=background:rgba(256,0,0,0.2);")}>
+                <td><input type="checkbox" /><input type="hidden" value="@item.Id"/></td>
+                <td>@item.Text</td>
+                <td>@if (item.DeadLine <= DateTime.Now)
+                    {
+                        <del>@item.DeadLine</del>
+                    }else{
+                        @item.DeadLine
+                    }
+                </td>
+                <td>
+                    @Model.Repository.GetCategoryById(item.CategoryId).Text
+                </td>
+                <td>@item.CreatedAt</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { item.Id }) 
+                </td>
+                </tr>
+            }
+
+        }
+        else
+        {
+            <tr>
+                <td colspan=6>There is nothing to show..</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table my-2">
+        <thead>
+        <tr>
+            <th>UnComplete</th>
+            <th>Text</th>
+            <th>DeadLine</th>
+            <th>Category</th>
+            <th>CompletedAt</th>
+            <th></th>
+        </tr>
+    </thead>
+        <tbody>
+        @if (Model.CompleteTasksTable.Count() > 0)
+        {
+            @foreach (var item in Model.CompleteTasksTable)
+            {
+                <tr @if(item.DeadLine <= DateTime.Now){@("style=background:rgba(256,0,0,0.2);")}>
+                    <td><input checked type="checkbox" /><input type="hidden" value="@item.Id"/></td>
+                    <td>@item.Text</td>
+                    <td>@item.DeadLine</td>
+                    <td>
+                        @Model.Repository.GetCategoryById(item.CategoryId).Text
+                    </td>
+                    <td>@item.CompletedAt</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { item.Id })
+                    </td>
+                </tr>
+            }
+         }else{
+                <tr>
+                    <td colspan=6>There is nothing to show..</td>
+                </tr>
+            }
+            </tbody>
+</table>
