@@ -14,90 +14,99 @@ namespace XMLDataRepository
     {
         private readonly string categoriesPath = Environment.CurrentDirectory + @"\../XMLRepository\Storage\Categories.xml";
         private readonly string tasksPath = Environment.CurrentDirectory+ @"\../XMLRepository\Storage\Tasks.xml";
-        public void CreateCategory(CategoryEntity category)
+        public CategoryEntity CreateCategory(CategoryEntity category)
         {
             XDocument doc = XDocument.Load(categoriesPath);
 
             XElement todos = doc.Element("Categories");
             if (todos == null)
             {
-                return;
+                return null;
             }
-
+            category.Id = (int)DateTime.Now.Ticks / 10 % 1000000000;
             todos.Add(new XElement("Category",
-                    new XAttribute("Id", DateTime.Now.Ticks / 10 % 1000000000),
+                    new XAttribute("Id", category.Id),
                     new XElement("Text", category.Text)
                 ));
             doc.Save(categoriesPath);
+            return category;
         }
 
-        public void CreateTask(TaskEntity task)
+        public TaskEntity CreateTask(TaskEntity task)
         {
             XDocument doc = XDocument.Load(tasksPath);
             XElement todos = doc.Element("Todos");
             if (todos == null)
             {
-                return;
+                return null;
             }
-            
+            task.Id = (int)(DateTime.Now.Ticks / 10 % 1000000000);
+            task.CreatedAt = DateTime.Now;
+            task.IsCompleted = false;
+
             todos.Add(new XElement("Task",
-                    new XAttribute("Id", DateTime.Now.Ticks / 10 % 1000000000),
+                    new XAttribute("Id", task.Id),
                     new XElement("Text", task.Text),
                     new XElement("DeadLine", task.DeadLine),
-                    new XElement("CreatedAt", DateTime.Now),
+                    new XElement("CreatedAt", task.CreatedAt),
                     new XElement("CompletedAt", task.CompletedAt),
-                    new XElement("IsCompleted", false),
+                    new XElement("IsCompleted", task.IsCompleted),
                     new XElement("CategoryId", task.CategoryId)
                 ));
             doc.Save(tasksPath);
+            return task;
         }
 
-        public void DeleteCategory(int Id)
+        public CategoryEntity DeleteCategory(int Id)
         {
             XDocument doc = XDocument.Load(categoriesPath);
             XElement todos = doc.Element("Categories");
 
             if (todos == null)
             {
-                return;
+                return null;
             }
 
             var categoryItem = todos.Elements("Category").FirstOrDefault(t => t.Attribute("Id").Value == Id.ToString());
 
             if (categoryItem == null)
             {
-                return;
+                return null;
             }
 
             var taskList = GetAllTasksList();
 
             if (taskList.AsEnumerable().FirstOrDefault(r => r.CategoryId == Id) != null)
             {
-                return;
+                return null;
             }
 
             categoryItem.Remove();
             doc.Save(categoriesPath);
+
+            return GetCategoryById(Id);
         }
 
-        public void DeleteTask(int Id)
+        public TaskEntity DeleteTask(int Id)
         {
             XDocument doc = XDocument.Load(tasksPath);
             XElement todos = doc.Element("Todos");
 
             if (todos == null)
             {
-                return;
+                return null;
             }
 
             var target = todos.Elements("Task").FirstOrDefault(t => t.Attribute("Id").Value == Id.ToString());
 
             if (target == null)
             {
-                return;
+                return null;
             }
             target.Remove();
             doc.Save(tasksPath);
+
+            return GetTaskById(Id);
         }
 
         public List<CategoryEntity> GetAllCategoriesList()
@@ -183,37 +192,39 @@ namespace XMLDataRepository
             return GetAllTasksList().AsEnumerable().Where(r => r.Id == id).FirstOrDefault();
         }
 
-        public void UpdateCategory(CategoryEntity category)
+        public CategoryEntity UpdateCategory(CategoryEntity category)
         {
             XDocument doc = XDocument.Load(categoriesPath);
             var editableCategory = doc.Element("Categories").Elements("Category").FirstOrDefault(t => t.Attribute("Id").Value == category.Id.ToString());
 
             if (editableCategory == null)
             {
-                return;
+                return null;
             }
             editableCategory.Element("Text").Value = category.Text.ToString();
 
             doc.Save(categoriesPath);
+            return category;
         }
 
-        public void UpdateTask(TaskEntity task)
+        public TaskEntity UpdateTask(TaskEntity task)
         {
             XDocument doc = XDocument.Load(tasksPath);
             var editableTask = doc.Element("Todos").Elements("Task").FirstOrDefault(t => t.Attribute("Id").Value == task.Id.ToString());
 
             if (editableTask == null)
             {
-                return;
+                return null;
             }
             editableTask.Element("Text").Value = task.Text.ToString();
             editableTask.Element("DeadLine").Value = task.DeadLine.ToString();
-            editableTask.Element("CreatedAt").Value = task.CreatedAt.ToString();
             editableTask.Element("CompletedAt").Value = task.CompletedAt.ToString();
             editableTask.Element("IsCompleted").Value = task.IsCompleted.ToString();
             editableTask.Element("CategoryId").Value = task.CategoryId.ToString();
 
             doc.Save(tasksPath);
+
+            return task;
         }
     }
 }

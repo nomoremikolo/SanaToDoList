@@ -2,6 +2,7 @@
 using TaskEntity = BusinessLogic.Entities.TaskEntity;
 using GraphQL.Types;
 using AspDotNetProject.GraphQL.Types;
+using GraphQL;
 
 namespace AspDotNetProject.GraphQL.ToDo
 {
@@ -19,6 +20,14 @@ namespace AspDotNetProject.GraphQL.ToDo
                 {
                     return repository.GetAllTasksList();
                 });
+            Field<NonNullGraphType<ToDoType>, TaskEntity>()
+                .Name("GetTaskById")
+                .Argument<NonNullGraphType<IntGraphType>, int>("id", "Task id")
+                .Resolve(ctx =>
+                {
+                    return repository.GetTaskById(ctx.GetArgument<int>("id"));
+                });
+                
         }
     }
 }

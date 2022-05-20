@@ -16,44 +16,51 @@ namespace MSQLDataRepository
         {
             this.connectionString = connectionString;
         }
-        public void CreateCategory(CategoryEntity category)
+        public CategoryEntity CreateCategory(CategoryEntity category)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                connection.Execute(
+                category.Id = connection.QuerySingle(
                     @"insert into Categories
                     (Text) 
                     VALUES 
-                    (@CategoryText)",
+                    (@CategoryText);
+                    SELECT CAST(SCOPE_IDENTITY() as int);",
                     new
                     {
                         @CategoryText = category.Text
                     });
             }
+            return category;
         }
 
-        public void CreateTask(TaskEntity task)
+        public TaskEntity CreateTask(TaskEntity task)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                var test = new TaskEntity();
                 connection.Open();
-                connection.Execute(
+                task.Id = connection.QuerySingle<int>(
                     @"insert into tasks 
                     (Text,DeadLine,CategoryId,CreatedAt) 
                     VALUES 
-                    (@TaskText,@DeadLine,@CategoryId,@CreatedAt)",
+                    (@TaskText,@DeadLine,@CategoryId,@CreatedAt);
+                    SELECT CAST(SCOPE_IDENTITY() as int);",
                     new
                     {
                         TaskText = task.Text,
                         DeadLine = task.DeadLine,
                         CategoryId = task.CategoryId,
                         CreatedAt = DateTime.Now,
-                    });
+                    }
+                    );
             }
+
+            return task;
         }
 
-        public void DeleteCategory(int id)
+        public CategoryEntity DeleteCategory(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -67,9 +74,10 @@ namespace MSQLDataRepository
                         Id = id
                     });
             }
+            return GetCategoryById(id);
         }
 
-        public void DeleteTask(int id)
+        public TaskEntity DeleteTask(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -83,6 +91,7 @@ namespace MSQLDataRepository
                         Id = id
                     });
             }
+            return GetTaskById(id);
         }
 
         public List<CategoryEntity> GetAllCategoriesList()
@@ -143,7 +152,7 @@ namespace MSQLDataRepository
             }
         }
 
-        public void UpdateCategory(CategoryEntity category)
+        public CategoryEntity UpdateCategory(CategoryEntity category)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -160,20 +169,20 @@ namespace MSQLDataRepository
                         Id = category.Id
                     });
             }
+            return category;
         }
 
-        public void UpdateTask(TaskEntity task)
+        public TaskEntity UpdateTask(TaskEntity task)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var result = connection.Execute(
+                var result = connection.QuerySingle(
                     @"UPDATE Tasks 
                     SET 
                     Text = @Text, 
                     IsCompleted = @IsCompleted, 
                     DeadLine = @DeadLine, 
-                    CreatedAt = @CreatedAt,
                     CompletedAt = @CompletedAt,
                     CategoryId = @CategoryId
                     WHERE 
@@ -184,12 +193,12 @@ namespace MSQLDataRepository
                         Text = task.Text,
                         IsCompleted = task.IsCompleted,
                         DeadLine = task.DeadLine,
-                        CreatedAt = task.CreatedAt,
                         CompletedAt = task.CompletedAt,
                         CategoryId = task.CategoryId,
                         FinishDate = task.CompletedAt
                     });
             }
+            return task;
         }
     }
 }

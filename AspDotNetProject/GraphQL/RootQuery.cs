@@ -10,6 +10,9 @@ namespace AspDotNetProject.GraphQL
             Field<ToDoQueries>()
                 .Name("ToDo")
                 .Resolve(_ => new { });
+            Field<CategoriesQueries>()
+                .Name("Categories")
+                .Resolve(_ => new { });
         }
     }
 }

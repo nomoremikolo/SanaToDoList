@@ -32,6 +32,7 @@ public class Startup
         services.AddGraphQLApi();
         services.AddProviderService(configuration);
 
+        services.AddAutoMapper(typeof(MapperProfile));
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -41,7 +42,7 @@ public class Startup
         app.ApplicationServices.CreateScope();
 
         app.UseGraphQLPlayground();
-        app.UseGraphQL<ToDoSchema>();
+        app.UseGraphQL<ToDoListSchema>();
         app.UseGraphQLAltair();
         app.UseGraphQLGraphiQL();
 

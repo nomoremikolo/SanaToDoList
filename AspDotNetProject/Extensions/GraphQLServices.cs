@@ -6,6 +6,8 @@ using GraphQL.Server;
 using GraphQL.NewtonsoftJson;
 using AspDotNetProject.GraphQL.ToDo;
 using AspDotNetProject.GraphQL.Types;
+using AspDotNetProject.GraphQL.ToDo.Inputs;
+using AspDotNetProject.GraphQL.Categories;
 
 namespace AspDotNetProject.Extensions
 {
@@ -16,20 +18,36 @@ namespace AspDotNetProject.Extensions
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
 
-            services.AddSingleton<ToDoSchema>();
+            services.AddTransient<RootQuery>();
+            services.AddTransient<RootMutations>();
+
+            services.AddSingleton<ToDoListSchema>();
+
             services.AddSingleton<ToDoQueries>();
-            services.AddTransient<ToDoType>();
+            services.AddSingleton<ToDoMutation>();
+
+            services.AddSingleton<ToDoType>();
+            services.AddSingleton<CategoryType>();
+
+            services.AddSingleton<NewTaskInputType>();
+            services.AddSingleton<NewCategoryInputType>();
+
+            services.AddSingleton<UpdateTaskInputType>();
+            services.AddSingleton<UpdateCategoryInputType>();
+
+            services.AddSingleton<CategoriesQueries>();
+            services.AddSingleton<CategoriesMutation>();
 
 
             services.AddGraphQL(options => options
                 .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)
-                .AddHttpMiddleware<ToDoSchema>()
+                .AddHttpMiddleware<ToDoListSchema>()
                 .AddSystemTextJson()
                 .AddNewtonsoftJson()
-                .AddSchema<ToDoSchema>()
+                .AddSchema<ToDoListSchema>()
                 );
 
-            services.AddTransient<RootQuery>();
+
 
             return services;
         }
