@@ -60,39 +60,31 @@
             },
             "GraphQL": {
               "target": "Package",
-              "version": "[5.3.0, )"
+              "version": "[4.7.1, )"
             },
             "GraphQL.MicrosoftDI": {
               "target": "Package",
-              "version": "[5.3.0, )"
+              "version": "[4.7.1, )"
             },
-            "GraphQL.NewtonsoftJson": {
+            "GraphQL.Server.Authorization.AspNetCore": {
               "target": "Package",
-              "version": "[5.3.0, )"
-            },
-            "GraphQL.Server.Core": {
-              "target": "Package",
-              "version": "[5.2.1, )"
+              "version": "[5.2.0, )"
             },
             "GraphQL.Server.Transports.AspNetCore": {
               "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[5.2.0, )"
+            },
+            "GraphQL.Server.Transports.AspNetCore.SystemTextJson": {
+              "target": "Package",
+              "version": "[5.2.0, )"
             },
             "GraphQL.Server.Ui.Altair": {
               "target": "Package",
-              "version": "[6.1.0, )"
-            },
-            "GraphQL.Server.Ui.GraphiQL": {
-              "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[5.2.0, )"
             },
             "GraphQL.Server.Ui.Playground": {
               "target": "Package",
               "version": "[6.1.0, )"
-            },
-            "GraphQL.SystemTextJson": {
-              "target": "Package",
-              "version": "[5.3.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

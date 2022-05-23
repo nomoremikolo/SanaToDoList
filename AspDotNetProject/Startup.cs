@@ -1,15 +1,5 @@
-﻿using AspDotNetProject.Enum;
-using AspDotNetProject.Models;
-using BusinessLogic.intefaces;
-using MSQLDataRepository;
-using XMLDataRepository;
-
-using AspDotNetProject.GraphQL;
-using GraphQL.SystemTextJson;
-using GraphQL.MicrosoftDI;
+﻿using AspDotNetProject.GraphQL;
 using GraphQL;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
 using AspDotNetProject.Extensions;
 using AspDotNetProject;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -44,7 +34,6 @@ public class Startup
         app.UseGraphQLPlayground();
         app.UseGraphQL<ToDoListSchema>();
         app.UseGraphQLAltair();
-        app.UseGraphQLGraphiQL();
 
         app.UseRouting();
         app.UseEndpoints(endpoints =>
